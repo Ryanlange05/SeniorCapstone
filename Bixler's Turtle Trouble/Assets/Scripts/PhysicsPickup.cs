@@ -20,25 +20,27 @@ public class PhysicsPickup : MonoBehaviour
     }
 
     // Update is called once per frame
+    //there is an error somewhere below, I think we need more if statements before we run the picking up code
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.E))
         {
-        
-            if(CurrentObject)
-            {
-                CurrentObject.useGravity = true;
-                CurrentObject = null;
-                return;
-            }
+            
 
-            Ray CameraRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-            if(Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
-            {
-                CurrentObject = HitInfo.rigidbody;
-                CurrentObject.useGravity = false;
+                if (CurrentObject)
+                {
+                    CurrentObject.useGravity = true;
+                    CurrentObject = null;
+                    return;
+                }
+
+                Ray CameraRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+                if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
+                {
+                    CurrentObject = HitInfo.rigidbody;
+                    CurrentObject.useGravity = false;
+                }
             }
-        }
     }
 
     void FixedUpdate() 
