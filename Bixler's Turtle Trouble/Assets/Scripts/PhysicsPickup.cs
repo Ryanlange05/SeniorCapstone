@@ -50,7 +50,7 @@ public class PhysicsPickup : MonoBehaviour
             Vector3 DirectionToPoint = PickupTarget.position - CurrentObject.position;
             float DistanceToPoint = DirectionToPoint.magnitude;
 
-            CurrentObject.velocity = DirectionToPoint * 8f * DistanceToPoint;
+            CurrentObject.velocity = DirectionToPoint * 6f * DistanceToPoint;
         }
     }
 }
