@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class MeshCombiner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<MeshFilter> sourceMeshFilters;
+    [SerializeField] private MeshFilter targetMeshFilter;
 
-    // Update is called once per frame
-    void Update()
+    [ContextMenu("Combine Meshes")]
+    private void CombineMeshes()
     {
-        
+        var combine = new CombineInstance[sourceMeshFilters.Count];
+
+        for (var i = 0; i < sourceMeshFilters.Count; i++)
+        {
+            combine[i].mesh = sourceMeshFilters[i].sharedMesh;
+            combine[i].transform = sourceMeshFilters[i].transform.localToWorldMatrix;
+        }
+
+        var mesh = new Mesh();
+        mesh.CombineMeshes(combine);
+        targetMeshFilter.mesh = mesh;
     }
 }
