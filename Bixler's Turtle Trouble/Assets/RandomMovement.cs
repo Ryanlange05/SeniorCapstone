@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class RandomMovement : MonoBehaviour //don't forget to change the script name if you haven't
+using UnityEngine.AI;
+public class RandomMovement : MonoBehaviour
 {
     public UnityEngine.AI.NavMeshAgent agent;
     public float range; //radius of sphere
@@ -34,7 +34,7 @@ public class RandomMovement : MonoBehaviour //don't forget to change the script 
 
         Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
         UnityEngine.AI.NavMeshHit hit;
-        if (UnityEngine.AI.NavMesh.SamplePosition(randomPoint, out hit, 1.0f, UnityEngine.AI.NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
+        if (UnityEngine.AI.NavMesh.SamplePosition(randomPoint, out hit, 10.0f, UnityEngine.AI.NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
         {
             //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
             //or add a for loop like in the documentation
