@@ -1,39 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+
 
 public class NPCDetection : MonoBehaviour
 {
-    public Transform detectionOrigin; // Reference to the detection origin game object on the NPC
-    public float detectionRange = 10f; // The range of detection
-    public float detectionAngle = 60f; // The angle of detection in degrees
-    public float detectionRadius = 1f; // The radius of the detection sphere
-    public string targetObjectName = "turtle"; // The name of the target game object
+    public LayerMask targetLayer;
+    public float detectionRange = 10f;
+    public float fieldOfViewAngle = 60f;
+    public float maxAngle = 180f;
 
     void Update()
     {
-        // Calculate the half angle in radians
-        float halfAngle = Mathf.Deg2Rad * detectionAngle * 0.5f;
+        DetectTarget();
+    }
 
-        // Calculate the forward and right vectors of the detection origin
-        Vector3 forward = detectionOrigin.forward;
-        Vector3 right = detectionOrigin.right;
-
-        // Calculate the start position of the detection sphere
-        Vector3 startPosition = detectionOrigin.position + forward * detectionRadius;
-
-        // Cast multiple overlapping spheres in a cone
-        RaycastHit[] hits = Physics.SphereCastAll(startPosition, detectionRadius, forward, detectionRange);
-
-        foreach (RaycastHit hit in hits)
+    void DetectTarget()
+    {
+        Collider[] targets = Physics.OverlapSphere(transform.position, detectionRange, targetLayer);
+        for (int i = 0; i < targets.Length; i++)
         {
-            if (Vector3.Dot((hit.point - detectionOrigin.position).normalized, forward) > Mathf.Cos(halfAngle))
+            Vector3 targetDirection = targets[i].transform.position - transform.position;
+            float angle = Vector3.Angle(targetDirection, transform.forward);
+            if (angle <= fieldOfViewAngle * 0.5f && angle <= maxAngle * 0.5f)
             {
-                if (hit.collider.CompareTag(targetObjectName))
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, targetDirection, out hit, detectionRange))
                 {
-                    // The NPC is looking at the target game object
-                    Debug.Log("NPC is looking at " + targetObjectName);
-                    // You can put your desired logic here, such as triggering an event or changing NPC behavior
+                    if (hit.collider.gameObject.CompareTag("Turtle"))
+                    {
+                        Debug.Log("Turtle detected!");
+                    }
                 }
             }
         }
@@ -41,8 +39,21 @@ public class NPCDetection : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        // Draw a sphere representing the detection range
+        // Update the position and rotation of the vision cone to match the NPC's position and rotation
+        Matrix4x4 originalMatrix = Gizmos.matrix;
+        Gizmos.matrix = transform.localToWorldMatrix;
+
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(detectionOrigin.position, detectionRange);
+        Gizmos.DrawWireSphere(Vector3.zero, detectionRange);
+
+        Vector3 frontRayDirection = Quaternion.Euler(0, -fieldOfViewAngle * 0.5f, 0) * transform.forward;
+        Vector3 rightRayDirection = Quaternion.Euler(0, fieldOfViewAngle * 0.5f, 0) * transform.forward;
+
+        Gizmos.DrawRay(Vector3.zero, frontRayDirection * detectionRange);
+        Gizmos.DrawRay(Vector3.zero, rightRayDirection * detectionRange);
+
+        Gizmos.DrawFrustum(Vector3.zero, fieldOfViewAngle, detectionRange, 0f, 1f);
+
+        Gizmos.matrix = originalMatrix;
     }
 }
