@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class FunctionTimer
 {
-
+    private bool isDestroyed;
+    private Action action;
+    private float timer;
     public static FunctionTimer Create(Action action, float timer)
     {
         FunctionTimer functionTimer = new FunctionTimer(action, timer);
@@ -26,9 +28,7 @@ public class FunctionTimer
             if (onUpdate != null) onUpdate();
         }
     }
-    private bool isDestroyed;
-    private Action action;
-    private float timer;
+    
     public FunctionTimer(Action action, float timer)
     {
         this.action = action;
