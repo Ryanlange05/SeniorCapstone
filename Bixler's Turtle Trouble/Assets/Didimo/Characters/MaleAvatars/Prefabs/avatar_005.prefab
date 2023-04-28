@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7981514964708312862, guid: d660ebcb8d02e1c428741ca9ff601eeb, type: 3}
       propertyPath: m_Name
-      value: avatar Variant
+      value: avatar_005
       objectReference: {fileID: 0}
     - target: {fileID: -6601043233671942095, guid: d660ebcb8d02e1c428741ca9ff601eeb, type: 3}
       propertyPath: m_RootOrder
