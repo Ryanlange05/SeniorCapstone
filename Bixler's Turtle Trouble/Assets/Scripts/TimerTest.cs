@@ -7,10 +7,12 @@ public class TimerTest : MonoBehaviour
     
     void Start()
     {
+        FunctionTimer.Create(TestingAction, 2f);
         FunctionTimer.Create(TestingAction, 1f);
     }
     private void TestingAction()
     {
+
         Debug.Log("TimerTest!!");
     }
 }
