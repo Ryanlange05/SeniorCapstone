@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CountDown : MonoBehaviour
 {
     float currentTime = 0f;
     float startingTime = 90f;
 
-    [SerializeField] Text CountDownText;
+    [SerializeField] TextMeshProUGUI CountdownText;
     void Start()
     {
         currentTime = startingTime;
@@ -18,6 +19,6 @@ public class CountDown : MonoBehaviour
     void Update()
     {
         currentTime -= 1 * Time.deltaTime;
-        CountDownText.text = startingTime.ToString();
+        CountdownText.text = currentTime.ToString();
     }
 }
