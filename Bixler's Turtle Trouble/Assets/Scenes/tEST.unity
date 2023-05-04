@@ -364,8 +364,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -34, y: 72}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 700, y: 0}
+  m_SizeDelta: {x: 768, y: 49}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &573886153
 MonoBehaviour:
@@ -1108,7 +1108,8 @@ GameObject:
   - component: {fileID: 1714884662}
   - component: {fileID: 1714884661}
   - component: {fileID: 1714884660}
-  - component: {fileID: 1714884659}
+  - component: {fileID: 1714884665}
+  - component: {fileID: 1714884664}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1116,21 +1117,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1714884659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714884658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512274899538d5d4298a3cd55c2e1992, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTime: 0
-  startingTime: 10
-  countdownText: {fileID: 0}
 --- !u!114 &1714884660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,6 +1199,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1714884664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714884658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512274899538d5d4298a3cd55c2e1992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingTime: 10
+  countdownText: {fileID: 573886153}
+--- !u!114 &1714884665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714884658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512274899538d5d4298a3cd55c2e1992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingTime: 10
+  countdownText: {fileID: 0}
 --- !u!1001 &1867555162
 PrefabInstance:
   m_ObjectHideFlags: 0

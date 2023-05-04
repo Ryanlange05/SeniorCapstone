@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
-public class LevelTimer : MonoBehaviour
+public class CountdownTimer : MonoBehaviour
 {
     float currentTime = 0f;
-    float startingTime = 10f;
+    [SerializeField] float startingTime = 10f;
 
-    [SerializeField] Text countdownText;
+    [SerializeField] TMP_Text countdownText;
 
     void Start()
     {
