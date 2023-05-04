@@ -7,6 +7,8 @@ public class npcControl2 : MonoBehaviour
     NavMeshAgent agent;
     public Transform[] waypoints;
     int waypointIndex;
+    private int timesLooped;
+    public GameObject NPC;
     Vector3 target;
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,11 @@ public class npcControl2 : MonoBehaviour
         if (waypointIndex == waypoints.Length)
         {
             waypointIndex = 0;
+            timesLooped++;
+        }
+        if (timesLooped == 2)
+        {
+            //code for transitioning to next level or lose screen should be here
         }
     }
 }

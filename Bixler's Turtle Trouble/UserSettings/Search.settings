@@ -16,9 +16,9 @@ scopes = {
 	"last_search.2138236A" = "t:UMAWardrobeRecipe"
 	"OpenInspectorPreview.2138236A" = "0"
 	"currentGroup.2138236A" = "asset"
-	"last_search.F8949528" = ""
+	"last_search.F8949528" = "t:UMAWardrobeRecipe"
 	"OpenInspectorPreview.F8949528" = "0"
-	"currentGroup.F8949528" = "asset"
+	"currentGroup.F8949528" = "all"
 }
 providers = {
 	adb = {
@@ -65,7 +65,6 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
-	"w"
 ]
 searchItemFavorites = [
 ]
