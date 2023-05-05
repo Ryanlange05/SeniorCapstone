@@ -11,7 +11,8 @@ public class NPCDetection : MonoBehaviour
     public float fieldOfViewAngle = 60f;
     public float maxAngle = 180f;
     public Vector3 visionOriginOffset = Vector3.zero;
-
+    public int turts;
+    
     void Update()
     {
         DetectTarget();
@@ -33,6 +34,7 @@ public class NPCDetection : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("Turtle"))
                 {
                     Debug.Log("Turtle detected!");
+                        turts++;
                 }
             }
         }

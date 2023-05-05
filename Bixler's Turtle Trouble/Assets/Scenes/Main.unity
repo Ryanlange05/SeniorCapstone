@@ -8041,6 +8041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef5317b6b07653488bbd4435067fdad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  script: {fileID: 0}
   waypoints:
   - {fileID: 1485765108}
   - {fileID: 483274789}
@@ -8437,6 +8438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef5317b6b07653488bbd4435067fdad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  script: {fileID: 1956802344}
   waypoints:
   - {fileID: 1485765108}
   - {fileID: 483274789}
@@ -8491,6 +8493,7 @@ MonoBehaviour:
   fieldOfViewAngle: 80
   maxAngle: 180
   visionOriginOffset: {x: -0.015, y: 1.63, z: 0.1}
+  turts: 0
 --- !u!1 &1965276255 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7892085742027063612, guid: 79723f7a04c42fa4cb0fefb4f7686381, type: 3}

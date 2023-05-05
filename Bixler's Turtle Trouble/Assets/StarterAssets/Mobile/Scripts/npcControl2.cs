@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+
 public class npcControl2 : MonoBehaviour
 {
+    public NPCDetection script;
     NavMeshAgent agent;
     public Transform[] waypoints;
     int waypointIndex;
@@ -13,6 +16,7 @@ public class npcControl2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
       agent = GetComponent<NavMeshAgent>();
         UpdateDestination();
     }
@@ -25,6 +29,14 @@ public class npcControl2 : MonoBehaviour
             UpdateDestination();
         }
     }
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOverScreen");
+    }
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Apartment");
+    }
     void UpdateDestination()
     {
         target = waypoints[waypointIndex].position;
@@ -33,6 +45,7 @@ public class npcControl2 : MonoBehaviour
     }
     void IterateWaypointIndex()
     {
+        int turts = script.turts;
         waypointIndex++;
         if (waypointIndex == waypoints.Length)
         {
@@ -41,7 +54,19 @@ public class npcControl2 : MonoBehaviour
         }
         if (timesLooped == 2)
         {
-            //code for transitioning to next level or lose screen should be here
+           if (turts >= 2)
+            {
+                //you ded
+                Debug.Log("Game Over");
+                GameOver();
+            }
+           if (turts < 2)
+            {
+                //next level
+                Debug.Log("Time for Next level");
+                NextLevel();
+            }
+            
         }
     }
 }
