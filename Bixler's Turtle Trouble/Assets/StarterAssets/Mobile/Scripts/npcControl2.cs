@@ -52,6 +52,11 @@ public class npcControl2 : MonoBehaviour
             waypointIndex = 0;
             timesLooped++;
         }
+        if (turts >=2)
+        {
+            Debug.Log("Game Over");
+            GameOver();
+        }
         if (timesLooped == 2)
         {
            if (turts >= 2)
