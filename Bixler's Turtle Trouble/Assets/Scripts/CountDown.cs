@@ -6,6 +6,8 @@ using TMPro;
 
 public class CountDown : MonoBehaviour
 {
+    
+    public TextMeshProUGUI words;
     float currentTime = 0f;
     public float startingTime;
     public GameObject NPC;
@@ -19,6 +21,11 @@ public class CountDown : MonoBehaviour
         if (NPC != null )
         {
             NPC.gameObject.SetActive(false);
+        }
+        if (words != null )
+        {
+            words.gameObject.SetActive(true);
+
         }
     }
   
@@ -42,6 +49,11 @@ public class CountDown : MonoBehaviour
             }
    
         }
+        if (currentTime <= 80f)
+        {
+                words.gameObject.SetActive(false);
+        }
 
     }
 }
+
