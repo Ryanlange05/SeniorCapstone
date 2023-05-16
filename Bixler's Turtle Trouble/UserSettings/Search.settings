@@ -18,7 +18,7 @@ scopes = {
 	"currentGroup.2138236A" = "asset"
 	"last_search.F8949528" = "t:UMAWardrobeRecipe"
 	"OpenInspectorPreview.F8949528" = "0"
-	"currentGroup.F8949528" = "all"
+	"currentGroup.F8949528" = "scene"
 }
 providers = {
 	adb = {
