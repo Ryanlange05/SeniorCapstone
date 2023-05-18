@@ -6,33 +6,36 @@ using TMPro;
 
 public class CountDown : MonoBehaviour
 {
-    
     public TextMeshProUGUI words;
-    float currentTime = 0f;
+    public float currentTime = 0f;
     public float startingTime;
     public GameObject NPC;
-    //GameObject NPC = GameObject.Find("NPC");
 
     [SerializeField] TextMeshProUGUI CountdownText;
+    private bool isCountingDown = false;
+
+    public float CurrentTime => currentTime; // Getter for accessing currentTime
+
     void Start()
     {
-       
         currentTime = startingTime;
-        if (NPC != null )
+        if (NPC != null)
         {
             NPC.gameObject.SetActive(false);
         }
-        if (words != null )
+        if (words != null)
         {
             words.gameObject.SetActive(true);
-
         }
+        enabled = false; // Disable countdown functionality initially
     }
-  
 
     void Update()
     {
-        currentTime -= 1 * Time.deltaTime;
+        if (!isCountingDown)
+            return;
+
+        currentTime -= Time.deltaTime;
         CountdownText.text = currentTime.ToString("0");
         if (currentTime <= 15f)
         {
@@ -42,18 +45,20 @@ public class CountDown : MonoBehaviour
         {
             currentTime = 0;
             Debug.Log("Here comes Dr. Wnek");
-            //NPC = GameObject.Find("NPC");
-            if (NPC != null )
+
+            if (NPC != null)
             {
                 NPC.gameObject.SetActive(true);
             }
-   
         }
         if (currentTime <= 80f)
         {
-                words.gameObject.SetActive(false);
+            words.gameObject.SetActive(false);
         }
+    }
 
+    public void StartTimer()
+    {
+        isCountingDown = true;
     }
 }
-
