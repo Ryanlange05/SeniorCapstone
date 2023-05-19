@@ -9,15 +9,16 @@ public class CountDown : MonoBehaviour
     float currentTime = 0f;
     float startingTime = 90f;
     public GameObject NPC;
+    private bool isStarted;
     //GameObject NPC = GameObject.Find("NPC");
-
+    [SerializeField] TextMeshProUGUI Warning;
     [SerializeField] TextMeshProUGUI CountdownText;
 
     public void Start()
     {
 
-        currentTime = startingTime;
-        if (NPC != null )
+        //currentTime = startingTime;
+        if (NPC != null)
         {
             NPC.gameObject.SetActive(false);
         }
@@ -27,24 +28,47 @@ public class CountDown : MonoBehaviour
 
     public void Update()
     {
-        currentTime -= 1 * Time.deltaTime;
-        CountdownText.text = currentTime.ToString();
-        CountdownText.text = currentTime.ToString("0");
-        if (currentTime <= 15f)
+        if (currentTime == 0f)
         {
-            CountdownText.color = Color.red;
+            CountdownText.enabled = false;
         }
-        if (currentTime <= 0f)
+
+        startTimer();
+
+        if (isStarted)
         {
-            currentTime = 0;
-            Debug.Log("Here comes Dr. Wnek");
-            //NPC = GameObject.Find("NPC");
-            if (NPC != null )
+            currentTime -= 1 * Time.deltaTime;
+            CountdownText.text = currentTime.ToString();
+            CountdownText.text = currentTime.ToString("0");
+            if (currentTime <= 15f)
             {
-                NPC.gameObject.SetActive(true);
+                CountdownText.color = Color.red;
             }
+            if (currentTime <= 0f)
+            {
+                currentTime = 0;
+                Debug.Log("Here comes Dr. Wnek");
+                //NPC = GameObject.Find("NPC");
+                if (NPC != null)
+                {
+                    NPC.gameObject.SetActive(true);
+                }
 
+            }
         }
 
+    }
+    public void startTimer()
+    {
+        if (currentTime == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                CountdownText.enabled = true;
+                currentTime = startingTime;
+                isStarted = true;
+                Warning.text = "You have 90 seconds to hide the turtles";
+            }
+        }
     }
 }
