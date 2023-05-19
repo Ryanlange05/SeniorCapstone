@@ -7,23 +7,19 @@ public class TimerController : MonoBehaviour
 
     private void Start()
     {
-        countDownScript = GetComponentInChildren<CountDown>();
+        countDownScript = FindObjectOfType<CountDown>();
     }
 
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.E) && !hasPickedUpObject)
+        if (!hasPickedUpObject && other.gameObject.CompareTag("Turtle"))
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 1f);
-            foreach (Collider collider in colliders)
+            Rigidbody turtleRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            if (turtleRigidbody != null && !turtleRigidbody.useGravity)
             {
-                if (collider.CompareTag("Turtle"))
-                {
-                    hasPickedUpObject = true;
-                    countDownScript.gameObject.SetActive(true);
-                    countDownScript.StartTimer();
-                    break;
-                }
+                hasPickedUpObject = true;
+                countDownScript.gameObject.SetActive(true);
+                countDownScript.Start();
             }
         }
     }
