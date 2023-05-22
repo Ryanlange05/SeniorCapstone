@@ -13,17 +13,16 @@ public class CountDown : MonoBehaviour
     //GameObject NPC = GameObject.Find("NPC");
     [SerializeField] TextMeshProUGUI Warning;
     [SerializeField] TextMeshProUGUI CountdownText;
+    public GameObject invisTurtle1;
 
     public void Start()
     {
-
         //currentTime = startingTime;
         if (NPC != null)
         {
             NPC.gameObject.SetActive(false);
         }
     }
-
 
 
     public void Update()
@@ -58,6 +57,8 @@ public class CountDown : MonoBehaviour
         }
 
     }
+
+
     public void startTimer()
     {
         if (currentTime == 0)
@@ -68,7 +69,12 @@ public class CountDown : MonoBehaviour
                 currentTime = startingTime;
                 isStarted = true;
                 Warning.text = "You have 90 seconds to hide the turtles";
+                
+                bool isActive = invisTurtle1.activeSelf;
+                invisTurtle1.SetActive(!isActive);
             }
         }
     }
+
+
 }
