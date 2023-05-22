@@ -79,6 +79,7 @@ public class AnimationStateController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         animator.SetFloat("Speed", vertical);
         animator.SetFloat("Direction", horizontal);
-        Debug.Log("Horizontal: " + horizontal + " Vertical: " + vertical);
+        //Debug.Log("Horizontal: " + horizontal + " Vertical: " + vertical);
+        //commented out because it makes other messages hard to see
     }
 }

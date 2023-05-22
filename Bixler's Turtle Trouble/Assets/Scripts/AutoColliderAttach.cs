@@ -2,7 +2,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
-
+/*
 public class AutoColliderAttach : MonoBehaviour
 {
     public GameObject characterRoot;
@@ -103,3 +103,5 @@ public class AutoColliderAttach : MonoBehaviour
     }
 }
 }
+*/
+// had to comment out entire script becuase idk what is going on and there was 43 errors

@@ -3907,6 +3907,7 @@ GameObject:
   - component: {fileID: 792602951}
   - component: {fileID: 792602950}
   - component: {fileID: 792602957}
+  - component: {fileID: 792602958}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -4130,6 +4131,14 @@ MonoBehaviour:
   PlayerCamera: {fileID: 1809254357}
   PickupTarget: {fileID: 1750622737}
   PickupRange: 5
+--- !u!81 &792602958
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792602949}
+  m_Enabled: 1
 --- !u!4 &792854721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4316840790912696, guid: 7cd627a1919ab7748980fbcec674e6a0, type: 3}
@@ -4470,9 +4479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8fbcabb3b690c4691fde1ca15eda4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterRoot: {fileID: 1955376616}
-  includeChildren: 1
-  colliderPrefab: {fileID: 1267064718}
 --- !u!4 &881801776 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4517759716199774, guid: c8b63a757cfc15c40a46b3d1a93f140b, type: 3}
@@ -8307,8 +8313,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: THeme
+  - name: Theme
     clip: {fileID: 8300000, guid: 37f1d42de27eea441a21b423898eed31, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: 37f1d42de27eea441a21b423898eed31, type: 3}
+    volume: 1
+    pitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Test
+    clip: {fileID: 0}
     volume: 1
     pitch: 0
     loop: 1
