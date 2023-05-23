@@ -1,107 +1,77 @@
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
-#endif
-using UnityEngine;
-/*
-public class AutoColliderAttach : MonoBehaviour
-{
-    public GameObject characterRoot;
-    public bool includeChildren = true;
-    public CapsuleCollider colliderPrefab;
-    public float colliderRadius = 0.5f; // Adjust default value as needed
-    public float colliderHeight = 2f; // Adjust default value as needed
 
-#if UNITY_EDITOR
-    [MenuItem("MyMenu/Attach Colliders")]
-    private static void AttachCollidersMenu()
+[CustomEditor(typeof(AutoColliderAttach))]
+public class AutoColliderAttachEditor : Editor
+{
+    public override void OnInspectorGUI()
     {
-        AutoColliderAttach autoColliderAttach = FindObjectOfType<AutoColliderAttach>();
-        if (autoColliderAttach != null)
+        DrawDefaultInspector();
+
+        AutoColliderAttach autoColliderAttach = (AutoColliderAttach)target;
+
+        if (GUILayout.Button("Attach Colliders"))
         {
             autoColliderAttach.AttachColliders();
         }
-        else
+
+        if (GUILayout.Button("Remove All Colliders"))
         {
-            Debug.LogWarning("AutoColliderAttach script not found in the scene!");
+            autoColliderAttach.RemoveColliders();
         }
     }
+}
 #endif
 
-    private void Start()
+public class AutoColliderAttach : MonoBehaviour
+{
+    public CapsuleCollider colliderPrefab;
+
+    [SerializeField]
+    private float colliderRadius = 0.5f;
+    [SerializeField]
+    private float colliderHeight = 2f;
+
+    public void AttachColliders()
     {
-#if UNITY_EDITOR
-        AttachColliders();
-#endif
+        AttachCollidersToGameObject(gameObject);
     }
 
-    private void AttachColliders()
+    public void RemoveColliders()
     {
-        if (characterRoot == null)
+        RemoveCollidersFromGameObject(gameObject);
+    }
+
+    private void AttachCollidersToGameObject(GameObject gameObject)
+    {
+        Collider existingCollider = gameObject.GetComponent<Collider>();
+        if (existingCollider != null)
         {
-            Debug.LogError("Character root object reference is missing!");
+            Debug.Log($"Collider already attached to {gameObject.name}!");
             return;
         }
 
-        AttachCollidersToGameObject(characterRoot);
+        CapsuleCollider newCollider = gameObject.AddComponent<CapsuleCollider>();
+        newCollider.direction = colliderPrefab.direction;
+        newCollider.center = colliderPrefab.center;
+        newCollider.radius = colliderRadius;
+        newCollider.height = colliderHeight;
+        newCollider.isTrigger = false;
 
-        if (includeChildren)
-        {
-            AttachCollidersToChildren(characterRoot);
-        }
-    }
-
-   private void AttachCollidersToGameObject(GameObject gameObject)
-{
-    Collider existingCollider = gameObject.GetComponent<Collider>();
-    if (existingCollider != null)
-    {
-        Debug.Log($"Collider already attached to {gameObject.name}!");
-        return;
-    }
-
-    foreach (Transform child in gameObject.transform)
-    {
-        AttachCollidersToGameObject(child.gameObject);
-    }
-}
-
-      CapsuleCollider newCollider = gameObject.AddComponent<CapsuleCollider>();
-    newCollider.direction = colliderPrefab.direction;
-    newCollider.center = colliderPrefab.center;
-    newCollider.radius = colliderRadius; // Use serialized field for radius
-    newCollider.height = colliderHeight; // Use serialized field for height
-    newCollider.isTrigger = false;
-
-    void AttachCollidersToChildren(GameObject parentObject)
-    {
-        foreach (Transform child in parentObject.transform)
+        foreach (Transform child in gameObject.transform)
         {
             AttachCollidersToGameObject(child.gameObject);
-            AttachCollidersToChildren(child.gameObject);
         }
     }
 
-    void CopyColliderData(Collider source, Collider destination)
+    private void RemoveCollidersFromGameObject(GameObject gameObject)
     {
-        if (source is BoxCollider)
-        {
-            BoxCollider sourceBoxCollider = (BoxCollider)source;
-            BoxCollider destinationBoxCollider = (BoxCollider)destination;
+        Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
 
-            destinationBoxCollider.center = sourceBoxCollider.center;
-            destinationBoxCollider.size = sourceBoxCollider.size;
-        }
-        else if (source is SphereCollider)
+        for (int i = 0; i < colliders.Length; i++)
         {
-            SphereCollider sourceSphereCollider = (SphereCollider)source;
-            SphereCollider destinationSphereCollider = (SphereCollider)destination;
-
-            destinationSphereCollider.center = sourceSphereCollider.center;
-            destinationSphereCollider.radius = sourceSphereCollider.radius;
+            DestroyImmediate(colliders[i]);
         }
-        // Add more collider types here if needed
     }
 }
-}
-*/
-// had to comment out entire script becuase idk what is going on and there was 43 errors
