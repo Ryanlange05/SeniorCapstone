@@ -7843,20 +7843,14 @@ MonoBehaviour:
   - name: Theme
     clip: {fileID: 8300000, guid: 37f1d42de27eea441a21b423898eed31, type: 3}
     volume: 1
-    pitch: 0
+    pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: Theme
-    clip: {fileID: 8300000, guid: 37f1d42de27eea441a21b423898eed31, type: 3}
+  - name: pop
+    clip: {fileID: 8300000, guid: 0d11843483aee4c4fbe45596472d0d52, type: 3}
     volume: 1
-    pitch: 0
-    loop: 1
-    source: {fileID: 0}
-  - name: Test
-    clip: {fileID: 0}
-    volume: 1
-    pitch: 0
-    loop: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!4 &1565116809
 Transform:

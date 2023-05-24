@@ -25,20 +25,24 @@ public class PhysicsPickup : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            
 
-                if (CurrentObject)
+
+            if (CurrentObject)
                 {
                     CurrentObject.useGravity = true;
                     CurrentObject = null;
-                    return;
+                FindObjectOfType<SAudioManager>().Play("pop");
+                return;
+
                 }
 
                 Ray CameraRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
                 if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
                 {
-                    CurrentObject = HitInfo.rigidbody;
+                FindObjectOfType<SAudioManager>().Play("pop");
+                CurrentObject = HitInfo.rigidbody;
                     CurrentObject.useGravity = false;
+                
                 }
             }
     }
@@ -51,6 +55,8 @@ public class PhysicsPickup : MonoBehaviour
             float DistanceToPoint = DirectionToPoint.magnitude;
 
             CurrentObject.velocity = DirectionToPoint * 6f * DistanceToPoint;
+            
+
         }
     }
 }
