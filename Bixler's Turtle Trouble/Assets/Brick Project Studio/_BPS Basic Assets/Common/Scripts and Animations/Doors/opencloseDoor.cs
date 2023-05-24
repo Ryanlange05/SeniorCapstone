@@ -31,7 +31,8 @@ namespace SojaExiles
 							if (Input.GetKeyDown(KeyCode.T))
 							{
 								StartCoroutine(opening());
-							}
+                                FindObjectOfType<SAudioManager>().Play("door");
+                            }
 						}
 						else
                         {
@@ -40,7 +41,8 @@ namespace SojaExiles
 								if (Input.GetKeyDown(KeyCode.T))
 								{
 									StartCoroutine(closing());
-								}
+                                    FindObjectOfType<SAudioManager>().Play("door");
+                                }
 							}
 
 						}
