@@ -13,14 +13,15 @@ public class npcControl2 : MonoBehaviour
     private int timesLooped;
     public GameObject NPC;
     Vector3 target;
-    // Start is called before the first frame update
+    int levelsBeat = 0;
+    
     void Start()
     {
         
       agent = GetComponent<NavMeshAgent>();
         UpdateDestination();
     }
-    // Update is called once per frame
+   
     void Update()
     {
     if (Vector3.Distance(transform.position, target) < 1.8)
@@ -35,7 +36,15 @@ public class npcControl2 : MonoBehaviour
     }
     public void NextLevel()
     {
-        SceneManager.LoadScene("Apartment");
+        if (levelsBeat == 0)
+        {
+            SceneManager.LoadScene("Apartment");
+        }
+        if (levelsBeat == 1)
+        {
+            //SceneManager.LoadScene("YOU WIN")
+        }
+        levelsBeat++;
     }
     void UpdateDestination()
     {
@@ -57,21 +66,21 @@ public class npcControl2 : MonoBehaviour
             Debug.Log("Game Over");
             GameOver();
         }
-        if (timesLooped == 2)
+        if (timesLooped == 1)
         {
-           if (turts >= 2)
+            if (turts >= 1)
             {
                 //you ded
                 Debug.Log("Game Over");
                 GameOver();
             }
-           if (turts < 2)
+            if (turts < 1)
             {
                 //next level
                 Debug.Log("Time for Next level");
                 NextLevel();
             }
-            
+
         }
     }
 }

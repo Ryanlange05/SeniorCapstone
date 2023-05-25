@@ -10,14 +10,13 @@ public class CountDown : MonoBehaviour
     float startingTime = 90f;
     public GameObject NPC;
     private bool isStarted;
-    //GameObject NPC = GameObject.Find("NPC");
+    public GameObject invisTurtle1;
+
     [SerializeField] TextMeshProUGUI Warning;
     [SerializeField] TextMeshProUGUI CountdownText;
-    public GameObject invisTurtle1;
 
     public void Start()
     {
-        //currentTime = startingTime;
         if (NPC != null)
         {
             NPC.gameObject.SetActive(false);
@@ -47,7 +46,6 @@ public class CountDown : MonoBehaviour
             {
                 currentTime = 0;
                 Debug.Log("Here comes Dr. Wnek");
-                //NPC = GameObject.Find("NPC");
                 if (NPC != null)
                 {
                     NPC.gameObject.SetActive(true);

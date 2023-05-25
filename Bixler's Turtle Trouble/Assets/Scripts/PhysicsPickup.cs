@@ -12,15 +12,7 @@ public class PhysicsPickup : MonoBehaviour
     [SerializeField] private float PickupRange;
     private Rigidbody CurrentObject;
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    //there is an error somewhere below, I think we need more if statements before we run the picking up code
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -29,6 +21,8 @@ public class PhysicsPickup : MonoBehaviour
                 {
                     CurrentObject.useGravity = true;
                     CurrentObject = null;
+
+                //audio
                 FindObjectOfType<SAudioManager>().Play("pop");
                 return;
 
@@ -37,7 +31,11 @@ public class PhysicsPickup : MonoBehaviour
                 Ray CameraRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
                 if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
                 {
+
+                //audio
                 FindObjectOfType<SAudioManager>().Play("pop");
+
+
                 CurrentObject = HitInfo.rigidbody;
                     CurrentObject.useGravity = false;
                 
