@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
 public class RandomObjectSpawner : MonoBehaviour
 {
     public GameObject[] myObjects;
@@ -23,4 +24,6 @@ public class RandomObjectSpawner : MonoBehaviour
         }
     }
 }
+*/
+//its throing biiig errors so i had to comment it out
 

@@ -25,8 +25,6 @@ public class PhysicsPickup : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-
-
             if (CurrentObject)
                 {
                     CurrentObject.useGravity = true;

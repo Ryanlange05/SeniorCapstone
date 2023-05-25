@@ -1,39 +1,38 @@
 using UnityEngine;
 using TMPro;
-
+/*
 public class ObjectInteraction : MonoBehaviour
 {
-    public GameObject player;
-    public TMP_Text textBox;
-    public string objectName;
-    public string interactionMessage;
+    [SerializeField] float raycastDistance = 2f;
+    public LayerMask pickupLayer;
+    public TextMeshProUGUI textMeshPro;
+    public PhysicsPickup physicsPickup;
 
-    private bool isLookingAtObject = false;
-
-    void Update()
+    private void Update()
     {
-        // Check if the player is looking at the object
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit))
+
+        if (Physics.Raycast(ray, out hit, raycastDistance, pickupLayer))
         {
-            if (hit.collider.gameObject == gameObject)
+            GameObject hitObject = hit.collider.gameObject;
+            if (hitObject.layer == LayerMask.NameToLayer("Pickup"))
             {
-                isLookingAtObject = true;
-                textBox.text = "Press E to pick up " + objectName;
-                textBox.gameObject.SetActive(true);
-            }
-            else
-            {
-                isLookingAtObject = false;
-                textBox.gameObject.SetActive(false);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    physicsPickup.PickUpObject();
+                    textMeshPro.text = "Press E to drop " + hitObject.name;
+                }
+                else
+                {
+                    textMeshPro.text = "Press E to pick up " + hitObject.name;
+                }
             }
         }
-
-        // Check for interaction input
-        if (isLookingAtObject && Input.GetKeyDown(KeyCode.E))
+        else
         {
-            // Perform the interaction here, e.g., picking up the object
-            // ...
+            textMeshPro.text = "";
         }
     }
 }
+*/

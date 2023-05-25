@@ -75,10 +75,10 @@ public class AnimationStateController : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
         }
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        animator.SetFloat("Speed", vertical);
-        animator.SetFloat("Direction", horizontal);
+        // float horizontal = Input.GetAxis("Horizontal");
+        // float vertical = Input.GetAxis("Vertical");
+        // animator.SetFloat("Speed", vertical);
+        // animator.SetFloat("Direction", horizontal);
        
     }
 }
