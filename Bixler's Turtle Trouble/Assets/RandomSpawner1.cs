@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class RandomSpawner1 : MonoBehaviour
 {
+    public GameObject counterTurt;
     public GameObject[] myObjects;
     public GameObject[] Player;
-    void Start()
+   
+    public void spawnTurts()
     {
-        //should make this when the turtle on the counter is picked up not on start, but idk where the code for that is 
         for (int i = 0; i < 20; i++)
         {
             int randomIndex = Random.Range(0, myObjects.Length);
@@ -17,11 +18,5 @@ public class RandomSpawner1 : MonoBehaviour
             Instantiate(myObjects[randomIndex], randomSpawnPosition, Quaternion.identity);
             Debug.Log("spawning a turt!");
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

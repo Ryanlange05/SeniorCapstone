@@ -31,7 +31,7 @@ public class CountDown : MonoBehaviour
             CountdownText.enabled = false;
         }
 
-        startTimer();
+        //startTimer();
 
         if (isStarted)
         {

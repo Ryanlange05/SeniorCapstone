@@ -11,10 +11,12 @@ public class PhysicsPickup : MonoBehaviour
     [Space]
     [SerializeField] private float PickupRange;
     private Rigidbody CurrentObject;
-    
+    public Rigidbody counterTurt;
+    int isSpawned = 0;
     
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (CurrentObject)
@@ -24,9 +26,22 @@ public class PhysicsPickup : MonoBehaviour
 
                 //audio
                 FindObjectOfType<SAudioManager>().Play("pop");
-                return;
+                
 
+                if (CurrentObject.useGravity == false)
+                {
+                    FindObjectOfType<CountDown>().startTimer();
+                    Debug.Log("Starting Timer");
+                    if (isSpawned == 0)
+                    {
+                        FindObjectOfType<RandomSpawner1>().spawnTurts();
+                        isSpawned++;
+                        Debug.Log("Spawning Turts");
+                    }
                 }
+                return;
+            }
+           
 
                 Ray CameraRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
                 if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
