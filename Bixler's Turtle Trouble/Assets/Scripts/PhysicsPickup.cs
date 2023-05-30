@@ -13,6 +13,7 @@ public class PhysicsPickup : MonoBehaviour
     public bool isHoldingObject = false;
     public Rigidbody counterTurt;
     int isSpawned = 0;
+    int isTimed = 0;
 
     void Update()
     {
@@ -24,21 +25,11 @@ public class PhysicsPickup : MonoBehaviour
 
                 // Play audio
                 FindObjectOfType<SAudioManager>().Play("pop");
-
-                if (!currentObject.useGravity)
-                {
-                    FindObjectOfType<CountDown>().startTimer();
-                    Debug.Log("Starting Timer");
-                    if (isSpawned == 0)
-                    {
-                        FindObjectOfType<RandomSpawner1>().spawnTurts();
-                        isSpawned++;
-                        Debug.Log("Spawning Turts");
-                    }
-                }
             }
             else
             {
+                
+               
                 PickUpObject();
             }
         }
@@ -66,6 +57,21 @@ public class PhysicsPickup : MonoBehaviour
             currentObject = hitInfo.rigidbody;
             currentObject.useGravity = false;
             isHoldingObject = true;
+            if (!currentObject.useGravity)
+            {
+                if (isTimed == 0)
+                {
+                    FindObjectOfType<CountDown>().startTimer();
+                    Debug.Log("Starting Timer");
+                    isTimed++;
+                }
+                if (isSpawned == 0)
+                {
+                    FindObjectOfType<RandomSpawner1>().spawnTurts();
+                    Debug.Log("Spawning Turts");
+                    isSpawned = 1;
+                }
+            }
         }
     }
 

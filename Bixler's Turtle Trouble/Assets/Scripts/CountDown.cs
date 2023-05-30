@@ -38,6 +38,10 @@ public class CountDown : MonoBehaviour
             currentTime -= 1 * Time.deltaTime;
             CountdownText.text = currentTime.ToString();
             CountdownText.text = currentTime.ToString("0");
+            if (currentTime < 80)
+            {
+                Warning.enabled = false;
+            }
             if (currentTime <= 15f)
             {
                 CountdownText.color = Color.red;
@@ -70,6 +74,7 @@ public class CountDown : MonoBehaviour
                 
                 bool isActive = invisTurtle1.activeSelf;
                 invisTurtle1.SetActive(!isActive);
+                
             }
         }
     }
