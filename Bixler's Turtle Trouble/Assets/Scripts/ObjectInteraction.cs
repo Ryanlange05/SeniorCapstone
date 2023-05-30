@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-/*
+
 public class ObjectInteraction : MonoBehaviour
 {
     [SerializeField] float raycastDistance = 2f;
@@ -20,8 +20,16 @@ public class ObjectInteraction : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    physicsPickup.PickUpObject();
-                    textMeshPro.text = "Press E to drop " + hitObject.name;
+                    if (physicsPickup.isHoldingObject)
+                    {
+                        physicsPickup.ReleaseObject();
+                        textMeshPro.text = "Press E to pick up " + hitObject.name;
+                    }
+                    else
+                    {
+                        physicsPickup.PickUpObject();
+                        textMeshPro.text = "Press E to drop " + hitObject.name;
+                    }
                 }
                 else
                 {
@@ -35,4 +43,3 @@ public class ObjectInteraction : MonoBehaviour
         }
     }
 }
-*/

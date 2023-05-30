@@ -4,31 +4,28 @@ using UnityEngine;
 
 public class PhysicsPickup : MonoBehaviour
 {
-    
-    [SerializeField] private LayerMask PickupMask; // Determines what layer the player is able to pick up
-    [SerializeField] private Camera PlayerCamera; // Allows function viewport point to ray
-    [SerializeField] private Transform PickupTarget;
+    [SerializeField] private LayerMask pickupMask; // Determines what layer the player is able to pick up
+    [SerializeField] private Camera playerCamera; // Allows function viewport point to ray
+    [SerializeField] private Transform pickupTarget;
     [Space]
-    [SerializeField] private float PickupRange;
-    private Rigidbody CurrentObject;
+    [SerializeField] private float pickupRange;
+    private Rigidbody currentObject;
+    public bool isHoldingObject = false;
     public Rigidbody counterTurt;
     int isSpawned = 0;
-    
+
     void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (CurrentObject)
-                {
-                    CurrentObject.useGravity = true;
-                    CurrentObject = null;
+            if (isHoldingObject)
+            {
+                ReleaseObject();
 
-                //audio
+                // Play audio
                 FindObjectOfType<SAudioManager>().Play("pop");
-                
 
-                if (CurrentObject.useGravity == false)
+                if (!currentObject.useGravity)
                 {
                     FindObjectOfType<CountDown>().startTimer();
                     Debug.Log("Starting Timer");
@@ -39,35 +36,43 @@ public class PhysicsPickup : MonoBehaviour
                         Debug.Log("Spawning Turts");
                     }
                 }
-                return;
             }
-           
-
-                Ray CameraRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-                if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
-                {
-
-                //audio
-                FindObjectOfType<SAudioManager>().Play("pop");
-
-
-                CurrentObject = HitInfo.rigidbody;
-                    CurrentObject.useGravity = false;
-                
-                }
+            else
+            {
+                PickUpObject();
             }
+        }
     }
 
-    void FixedUpdate() 
+    void FixedUpdate()
     {
-        if(CurrentObject)
+        if (isHoldingObject)
         {
-            Vector3 DirectionToPoint = PickupTarget.position - CurrentObject.position;
-            float DistanceToPoint = DirectionToPoint.magnitude;
+            Vector3 directionToPoint = pickupTarget.position - currentObject.position;
+            float distanceToPoint = directionToPoint.magnitude;
 
-            CurrentObject.velocity = DirectionToPoint * 6f * DistanceToPoint;
-            
-
+            currentObject.velocity = directionToPoint * 6f * distanceToPoint;
         }
+    }
+
+    public void PickUpObject()
+    {
+        Ray cameraRay = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        if (Physics.Raycast(cameraRay, out RaycastHit hitInfo, pickupRange, pickupMask))
+        {
+            // Play audio
+            FindObjectOfType<SAudioManager>().Play("pop");
+
+            currentObject = hitInfo.rigidbody;
+            currentObject.useGravity = false;
+            isHoldingObject = true;
+        }
+    }
+
+    public void ReleaseObject()
+    {
+        currentObject.useGravity = true;
+        currentObject = null;
+        isHoldingObject = false;
     }
 }
