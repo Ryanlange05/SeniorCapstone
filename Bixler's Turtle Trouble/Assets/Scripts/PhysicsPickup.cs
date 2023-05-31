@@ -59,13 +59,13 @@ public class PhysicsPickup : MonoBehaviour
             isHoldingObject = true;
             if (!currentObject.useGravity)
             {
-                if (isTimed == 0)
+                if (isTimed == 0 && currentObject.CompareTag("Turtle"))
                 {
                     FindObjectOfType<CountDown>().startTimer();
                     Debug.Log("Starting Timer");
                     isTimed++;
                 }
-                if (isSpawned == 0)
+                if (isSpawned == 0 && currentObject.CompareTag("Turtle"))
                 {
                     FindObjectOfType<RandomSpawner1>().spawnTurts();
                     Debug.Log("Spawning Turts");
