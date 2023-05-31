@@ -65,8 +65,7 @@ public class CountDown : MonoBehaviour
     {
         if (currentTime == 0)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
+           
                 CountdownText.enabled = true;
                 currentTime = startingTime;
                 isStarted = true;
@@ -75,7 +74,7 @@ public class CountDown : MonoBehaviour
                 bool isActive = invisTurtle1.activeSelf;
                 invisTurtle1.SetActive(!isActive);
                 
-            }
+           
         }
     }
 

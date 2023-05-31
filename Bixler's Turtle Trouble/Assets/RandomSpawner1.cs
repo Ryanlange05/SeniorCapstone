@@ -10,7 +10,7 @@ public class RandomSpawner1 : MonoBehaviour
    
     public void spawnTurts()
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 6; i++)
         {
             int randomIndex = Random.Range(0, myObjects.Length);
             Vector3 randomSpawnPosition = new Vector3(Random.Range(8, -8), 5, Random.Range(8, -8));

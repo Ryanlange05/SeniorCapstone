@@ -11,6 +11,7 @@ namespace SojaExiles
 		public Animator openandclose1;
 		public bool open;
 		public Transform Player;
+		private bool isStarted = true;
 
 		void Start()
 		{
@@ -58,7 +59,14 @@ namespace SojaExiles
 			print("you are opening the door");
 			openandclose1.Play("Opening 1");
 			open = true;
-			yield return new WaitForSeconds(.5f);
+			if (isStarted)
+			{
+                FindObjectOfType<CountDown>().startTimer();
+                Debug.Log("Starting Timer");
+				isStarted = false;
+            }
+          
+            yield return new WaitForSeconds(.5f);
 		}
 
 		IEnumerator closing()
