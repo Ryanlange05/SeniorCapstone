@@ -69,7 +69,7 @@ public class CountDown : MonoBehaviour
                 CountdownText.enabled = true;
                 currentTime = startingTime;
                 isStarted = true;
-                Warning.text = "You have 90 seconds to hide the turtles";
+                Warning.text = "Dr. Wnek is coming, I have to hide the turtles!";
                 
                 bool isActive = invisTurtle1.activeSelf;
                 invisTurtle1.SetActive(!isActive);
