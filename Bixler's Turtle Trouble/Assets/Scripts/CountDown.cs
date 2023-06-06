@@ -31,8 +31,6 @@ public class CountDown : MonoBehaviour
             CountdownText.enabled = false;
         }
 
-        //startTimer();
-
         if (isStarted)
         {
             currentTime -= 1 * Time.deltaTime;

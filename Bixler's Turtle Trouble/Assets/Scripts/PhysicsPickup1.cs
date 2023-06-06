@@ -60,18 +60,7 @@ public class PhysicsPickup1 : MonoBehaviour
             currentObject.useGravity = false;
             isHoldingObject = true;
 
-            //for starting the timer
-
-            /*if (!currentObject.useGravity)
-            {
-                if (isTimed == 0 && currentObject.CompareTag("Turtle"))
-                {
-                    FindObjectOfType<CountDown>().startTimer();
-                    Debug.Log("Starting Timer");
-                    isTimed++;
-                }
-            }
-            */
+          
 
 
         }
