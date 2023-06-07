@@ -40,7 +40,7 @@ public partial class SAudioManager : MonoBehaviour
 
     void Start()
     {
-        Play("Theme");
+       // Play("Theme");
 
     }
 
