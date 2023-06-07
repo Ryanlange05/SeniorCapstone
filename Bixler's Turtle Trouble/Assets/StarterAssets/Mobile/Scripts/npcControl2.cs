@@ -30,28 +30,32 @@ public class npcControl2 : MonoBehaviour
             UpdateDestination();
         }
     }
+
     public void GameOver()
     {
         SceneManager.LoadScene("GameOverScreen");
     }
+
     public void NextLevel()
     {
         if (levelsBeat == 0)
         {
             SceneManager.LoadScene("Apartment");
         }
-        if (levelsBeat == 1)
+        if (levelsBeat > 0)
         {
-            //SceneManager.LoadScene("YOU WIN")
+            SceneManager.LoadScene(4);
         }
         levelsBeat++;
     }
+
     void UpdateDestination()
     {
         target = waypoints[waypointIndex].position;
         agent.SetDestination(target);
 
     }
+
     void IterateWaypointIndex()
     {
         int turts = script.turts;
@@ -79,6 +83,7 @@ public class npcControl2 : MonoBehaviour
                 //next level
                 Debug.Log("Time for Next level");
                 NextLevel();
+                levelsBeat++;
             }
 
         }
