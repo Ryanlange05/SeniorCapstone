@@ -38,15 +38,20 @@ public class npcControl2 : MonoBehaviour
 
     public void NextLevel()
     {
-        if (levelsBeat == 0)
-        {
-            SceneManager.LoadScene("Apartment");
-        }
-        if (levelsBeat > 0)
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "Apartment")
         {
             SceneManager.LoadScene(4);
+            Debug.Log("you win!");
         }
-        levelsBeat++;
+
+        if (scene.name == "Main")
+        {
+            SceneManager.LoadScene("Apartment");
+            levelsBeat = 1;
+
+        }
+        
     }
 
     void UpdateDestination()
@@ -83,7 +88,7 @@ public class npcControl2 : MonoBehaviour
                 //next level
                 Debug.Log("Time for Next level");
                 NextLevel();
-                levelsBeat++;
+                //levelsBeat=1;
             }
 
         }
