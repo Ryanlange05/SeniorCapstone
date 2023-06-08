@@ -5,7 +5,8 @@ Unity
 # Prereqs
 
 # Installation
-
+No installation needed! Our game is playable in a browser, just click the link below.
+https://ryanlange05.itch.io/bixlers-turtle-trouble
 # Usage
 
 # Roadmap
