@@ -3,7 +3,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 # About
@@ -39,3 +38,16 @@ Logan Gross - loganagross@gmail.com
 
 # Acknowledgements
 We would like to thank Dr. Bixler, our esteemed computer science teacher. Throughout our journey in computer science, Dr. Bixler has been an invaluable source of knowledge, inspiration, and guidance. His passion for the subject and dedication to teaching at the Marine Academy of Technology and Environmental Science has had a profound impact on our learning experience. We would also like to acknowledge Jon Gery for his assistance in installing the required software on our school computers to make this game a reality. Both of their contributions have led us down the path of success, and for that, we show sincere gratitude.
+
+
+[contributors-shield]: https://img.shields.io/github/contributors/Ryanlange05/SeniorCapstone.svg?style=for-the-badge
+[contributors-url]: https://github.com/Ryanlange05/SeniorCapstone/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Ryanlange05/SeniorCapstone.svg?style=for-the-badge
+[forks-url]: https://github.com/Ryanlange05/SeniorCapstone/network/members
+[stars-shield]: https://img.shields.io/github/stars/Ryanlange05/SeniorCapstone.svg?style=for-the-badge
+[stars-url]: https://github.com/Ryanlange05/SeniorCapstone/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Ryanlange05/SeniorCapstone.svg?style=for-the-badge
+[issues-url]: https://github.com/Ryanlange05/SeniorCapstone/issues
+[license-shield]: https://img.shields.io/github/license/Ryanlange05/SeniorCapstone.svg?style=for-the-badge
+[license-url]: https://github.com/Ryanlange05/SeniorCapstone/blob/master/LICENSE.txt
+
