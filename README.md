@@ -30,6 +30,7 @@ https://youtu.be/tjTeXaCrQgo
 This project was divided evenly between Logan Gross and Ryan Lange. Each member found a task to work on and completed it.
 
 # License 
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 # Contact
 Ryan Lange - ryanlange05@gmail.com
