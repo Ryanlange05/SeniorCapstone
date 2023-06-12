@@ -37,7 +37,7 @@ Ryan Lange - ryanlange05@gmail.com
 Logan Gross - loganagross@gmail.com
 
 # Acknowledgements
-We would like to thank Dr. Bixler, our esteemed computer science teacher. Throughout our journey in computer science, Dr. Bixler has been an invaluable source of knowledge, inspiration, and guidance. His passion for the subject and dedication to teaching at the Marine Academy of Technology and Environmental Science has had a profound impact on our learning experience. We would also like to acknowledge Jon Gery for his assistance in installing the required software on our school computers to make this game a reality. Both of their contributions have led us down the path of success, and for that, we show sincere gratitude.
+We would like to thank Dr. Bixler, our esteemed computer science teacher. Throughout our journey in computer science, Dr. Bixler has been an invaluable source of knowledge, inspiration, and guidance. His passion for the subject and dedication to teaching at the Marine Academy of Technology and Environmental Science has had a profound impact on our learning experience. We would also like to acknowledge Jon Gery for his assistance in installing the required software on our school computers to make this game a reality. Both of their contributions have led us down the path of success, and for that, we show sincere gratitude. Lastly, we would like to recognize the developers at Sandbay Games who developed "Barry Has a Secret". Their game was a big inspiration for our project.
 
 
 [contributors-shield]: https://img.shields.io/github/contributors/Ryanlange05/SeniorCapstone.svg?style=for-the-badge
